@@ -22,16 +22,11 @@ void intro(){
 	system("Color 0B");
 
 cout<<"\t---------------- Welcome To My Mart ----------------"<<endl<<endl;
-	sleep(1);
+sleep(1);
 cout<<"\tPress 1 for Login"<<endl;
-
 cout<<"\tpress 2 for Registraion"<<endl;
-
 cout<<"\tpress 3 for Admin Login"<<endl;
-
-
 cout<<"\tPress 4 to Quit App"<<endl;
-
 cout<<endl;
 sleep(1);
 cout<<"Enter Number of Your choice : ";
@@ -89,9 +84,7 @@ void userlogin(){
     cin>>username;
     cout<<"\tEnter Your Password : ";
     cin>>password;
-
     ifstream file("userauthrecords.txt");
-
     while(file>>un>>pw){ 
         if(un == username && pw == password){
             isfound = true;
@@ -103,8 +96,7 @@ void userlogin(){
     if(isfound){
         cout<<"Successfully Login";
         sleep(2);
-        user_home();
-        
+        user_home(); 
     }else{
        int c;
         cout<<endl<<"\tWrong Username Or Password try Again"<<endl;
@@ -124,7 +116,6 @@ void userlogin(){
 			system("cls");
 			main();
 		}
-
 }
 }
 void userreg(){
@@ -148,8 +139,7 @@ void userreg(){
 		cout<<"Invalid Input";
 		sleep(2);
 		main();
-	}
-		
+}
 }
 //Admin ka Kaam
 void admin_home(){
