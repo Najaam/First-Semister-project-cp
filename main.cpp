@@ -20,19 +20,21 @@ void intro(){
 	system("cls");
 	int choice;
 	system("Color 0B");
+
 cout<<"\t---------------- Welcome To My Mart ----------------"<<endl<<endl;
-sleep(1);
+	sleep(1);
 cout<<"\tPress 1 for Login"<<endl;
-sleep(1);
+
 cout<<"\tpress 2 for Registraion"<<endl;
-sleep(1);
+
 cout<<"\tpress 3 for Admin Login"<<endl;
-sleep(1);
+
 
 cout<<"\tPress 4 to Quit App"<<endl;
-sleep(1);
+
 cout<<endl;
-cout<<"\tEnter Number of Your choice : ";
+sleep(1);
+cout<<"Enter Number of Your choice : ";
 	cin>>choice;
 if(choice == 1){
 	userlogin();
@@ -81,10 +83,11 @@ void user_home(){
 void userlogin(){
     string username,password,un,pw;
     bool isfound = false;
-    system("cls");
-    cout<<"Enter Your username : ";
+     system("cls");
+    cout<<"\t---------------- Welcome To User Registeration Page ----------------"<<endl<<endl;
+    cout<<"\tEnter Your username : ";
     cin>>username;
-    cout<<"Enter Your Password : ";
+    cout<<"\tEnter Your Password : ";
     cin>>password;
 
     ifstream file("userauthrecords.txt");
@@ -105,9 +108,11 @@ void userlogin(){
     }else{
        int c;
         cout<<endl<<"\tWrong Username Or Password try Again"<<endl;
+        sleep(1);
 		cout<<endl<<"\tWant to Redirect Welcome Screen press 1"<<endl;
 		cout<<"\tWant to Redirect User Registertation Screen press 2"<<endl;
-		cout<<endl<<"\tEnter Number of Your choice : ";
+		sleep(1);
+		cout<<endl<<"Enter Number of Your choice : ";
 		cin>>c;	
 		if(c==1){
 			main();
@@ -124,6 +129,7 @@ void userlogin(){
 }
 void userreg(){
 	string username,password,un,pw;
+	int c;
 	system("cls");
 	cout<<"\t---------------- Welcome To User Registeration Page ----------------"<<endl<<endl;
 	cout<<"\tEnter the username : ";
@@ -134,9 +140,16 @@ void userreg(){
 	file<<username<<" "<<password<<endl;
 	cout<<endl;
 	cout<<"\tRegisteration Sucessfull! Now u can Login and Enjoy our services";
-	sleep(3);
-	system("cls");
+	cout<<endl<<endl<<"Press 1 for Login Screen : ";
+	cin>>c;
+	if(c==1){
+		userlogin();
+	}else{
+		cout<<"Invalid Input";
+		sleep(2);
 		main();
+	}
+		
 }
 //Admin ka Kaam
 void admin_home(){
@@ -205,8 +218,6 @@ void adminlogin(){
         cout<<endl<<"\tWrong Username Or Password try Again"<<endl;
 	sleep(2);
 	main();
-	
-
 }
 }
 
