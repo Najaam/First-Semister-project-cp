@@ -1,0 +1,21 @@
+else{
+		cout<<endl<<"\tWrong Username Or Password try Again"<<endl;
+		cout<<endl<<"\tWant to Redirect Welcome Screen press 1"<<endl;
+		cout<<"\tWant to Redirect User Registertation Screen press 2"<<endl;
+		cout<<endl<<"\tEnter Number of Your choice : ";
+		cin>>c;	
+		if(c==1){
+			main();
+		}else if(c==2){
+			userreg();
+		}else{
+			cout<<"\tInvalid Input";
+			sleep(2);
+			system("cls");
+			main();
+		}
+
+	}
+}
+	file.close();
+}
