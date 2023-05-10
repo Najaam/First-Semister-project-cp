@@ -1,1 +1,15 @@
-asdas 0
+Laptop 55000
+Desktop-Computer 45000
+Smart-TV 65000
+Wireless-Earphones 8000
+Bluetooth-Speaker 12000
+Gaming-Console 40000
+Digital-Camera 25000
+Drone 35000
+Fitness-Tracker 6000
+Smart-Watch 15000
+WirelessCharger 2000
+Virtual-Reality-Headset 25000
+Soundbar 18000
+Projector 30000
+Home-Assistant(Amazon Echo/Google Nest) 10000

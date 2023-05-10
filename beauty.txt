@@ -1,2 +1,15 @@
-lipstick 1200
-haicolor 1250
+Lipstick 750
+Mascara 900
+Eyeliner 500
+Foundation 1200
+Blush 800
+Eyeshadow 1100
+Nail-Polish 300
+BB-Cream 950
+Makeup-Remover 600
+Face-Wash 400
+Toner 700
+Moisturizer 1000
+Sunscreen 900
+Body-Lotion 600
+Perfume 1500

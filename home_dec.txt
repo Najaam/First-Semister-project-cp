@@ -1,0 +1,15 @@
+Throw-pillows 1500
+Wall-mirrors 3500
+Wall-art 2500
+Table-lamps 2000
+Floor-lamps 5000
+Area-rugs 6000
+Curtains 3000
+Decorative-vases 1800
+Decorative-trays 1200
+Picture-frames 1000
+Decorative-candles 800
+Wall-shelves 4000
+Throw-blankets 2000
+Decorative-baskets 1500
+Artificial-plants 2500

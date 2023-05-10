@@ -1,6 +1,15 @@
-shalwar-kameez 5200
-levi-jeans 5800
-polo-shirt 1900
-dress-pant 2400
-dress-shirt 1700
-
+Shalwar-kameez 3200
+Levi-jeans 3800
+Polo-shirt 1900
+Dress-pant 2400
+Dress-shirt 1700
+Hoodie-jacket 3400
+Running-shoes 4100
+Sports-shorts 1400
+Track-pants 2300
+Denim-jacket 4800
+Leather-boots 7200
+Flip-flops 800
+Sunglasses 1800
+Watch 3500
+Khari 2400

@@ -333,6 +333,8 @@ void cat_homedec(){
 	  cin>>c;
  	if(c==1){
  		cout<<"Thanks for purchase your Pakage delevered to you as soon as possible";
+ 		sleep(3);
+ 		product_cat();
 	 }else if(c==2){
 	 	int cvv;
 		 cout<<"\tEnter the cvv number : ";
@@ -345,6 +347,8 @@ void cat_homedec(){
 	    sleep(1);
 	   cout<<".";
 	   cout<<endl<<"Thanks for purchase your Pakage delevered to you as soon as possible";
+	  sleep(3);
+	  product_cat();
 	 }
  }
 // User role Auth
