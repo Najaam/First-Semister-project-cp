@@ -1,0 +1,2 @@
+lipstick 1200
+haicolor 1250

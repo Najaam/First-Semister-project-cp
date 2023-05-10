@@ -1,0 +1,5 @@
+shalwar-kameez 5200
+levi-jeans 5800
+polo-shirt 1900
+dress-pant 2400
+dress-shirt 1700

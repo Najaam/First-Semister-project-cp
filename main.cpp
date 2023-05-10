@@ -12,6 +12,9 @@ void userreg();
 void adminreg();
 void user_home();
 void admin_home();
+void product_cat();
+void add_product();
+
 int main(){
 	intro();	
 }
@@ -54,15 +57,13 @@ void user_home(){
 	cout<<"\t---------------- Welcome To User Home Screen ----------------"<<endl<<endl;
 	sleep(1);
     cout<<"\t Press 1 to view Product Categories"<<endl;
-    sleep(1);
 	cout<<"\t press 2 to view Puchase History"<<endl;
-    sleep(1);
 	cout<<"\t Press 3 to Logout"<<endl;
  	sleep(1);
 	 cout<<endl<<"Enter The Number of Your choice : ";
  	cin>>c;
  	if(c==1){
- 		cout<<"Product category ka function nhi baana abhi tak";
+ 	 product_cat();
 	 }else if(c==2){
 	 	cout<<"Purchase history ka function nhi baana abhi tak";
 	 }else if(c==3){
@@ -74,12 +75,123 @@ void user_home(){
 	user_home();
 	 }
 }
+// viewcategory screen
+void product_cat(){
+	//function declearation
+void cat_fashion(); 
+void cat_mobile();
+void cat_homedec();
+void cat_electronics();
+void cat_beauty();
+	int c;
+string cat[5]={"Fashion",
+				"Mobiles and accesories",
+				"Beauty",
+				"Electronics",
+				"Home-Decoration"};
+	system("cls");
+	 cout<<"\t---------------- Choose the Category ----------------"<<endl<<endl;
+	 for(int i=0;i<5;i++){
+	 	cout<<"\tpress "<<i+1<<" for visiting "<<cat[i]<<" page"<<endl;
+	 }
+	 cout<<endl;
+	 cout<<"Enter Input of your choice: ";
+	 cin>>c;
+	 if(c==1){
+	 	cat_fashion();
+	 }else if(c==2){
+	 	cat_mobile();
+	 }else if(c==3){
+	 	cat_beauty();
+	 }else if(c==4){
+	 	cat_electronics();
+	 }else if(c==5){
+	 	cat_homedec();
+	 }else{
+	 	cout<<"Invalid Input";
+	 	sleep(2);
+	 	product_cat();
+	 }
+
+}
+//fashion category screen
+void cat_fashion(){
+ 	system("cls");
+ 	  string pname,pprice;
+	   cout<<"\t---------------- Fashion Page ----------------"<<endl<<endl;
+ 	  ifstream file("fashion.txt");
+ 	  int count =0;
+ 	  while(file>>pname>>pprice){
+ 	  	    cout<<count+1;
+ 	  	    cout << "\tProduct name: " << pname ;
+            cout << "\tProduct price: " << pprice<< endl;
+	      count++;
+	   }
+ }
+//Mobile category screen
+void cat_mobile(){
+ 	system("cls");
+ 	  string pname,pprice;
+	   cout<<"\t---------------- Mobiles and Accesories Page ----------------"<<endl<<endl;
+ 	  ifstream file("mobile.txt");
+ 	  int count =0;
+ 	  while(file>>pname>>pprice){
+ 	  	    cout<<count+1;
+ 	  	    cout << "\tProduct name: " << pname ;
+            cout << "\tProduct price: " << pprice<< endl;
+	      count++;
+	   }
+ }
+ //beauty category screen
+void cat_beauty(){
+ 	system("cls");
+ 	  string pname,pprice;
+	   cout<<"\t---------------- beauty Page ----------------"<<endl<<endl;
+ 	  ifstream file("beauty.txt");
+ 	  int count =0;
+ 	  while(file>>pname>>pprice){
+ 	  	    cout<<count+1;
+ 	  	    cout << "\tProduct name: " << pname ;
+            cout << "\tProduct price: " << pprice<< endl;
+	      count++;
+	   }
+ }
+ //electronics category screen
+void cat_electronics(){
+ 	system("cls");
+ 	  string pname,pprice;
+	   cout<<"\t---------------- Fashion Page ----------------"<<endl<<endl;
+ 	  ifstream file("electronics.txt");
+ 	  int count =0;
+ 	  while(file>>pname>>pprice){
+ 	  	    cout<<count+1;
+ 	  	    cout << "\tProduct name: " << pname ;
+            cout << "\tProduct price: " << pprice<< endl;
+	      count++;
+	   }
+ }
+ //home and decor category screen
+void cat_homedec(){
+ 	system("cls");
+ 	  string pname,pprice;
+	   cout<<"\t---------------- Fashion Page ----------------"<<endl<<endl;
+ 	  ifstream file("home_dec.txt");
+ 	  int count =0;
+ 	  while(file>>pname>>pprice){
+ 	  	    cout<<count+1;
+ 	  	    cout << "\tProduct name: " << pname ;
+            cout << "\tProduct price: " << pprice<< endl;
+	      count++;
+	   }
+ }
+ 
+  
 // User role Auth
 void userlogin(){
     string username,password,un,pw;
     bool isfound = false;
      system("cls");
-    cout<<"\t---------------- Welcome To User Registeration Page ----------------"<<endl<<endl;
+    cout<<"\t---------------- Welcome To User Login Page ----------------"<<endl<<endl;
     cout<<"\tEnter Your username : ";
     cin>>username;
     cout<<"\tEnter Your Password : ";
@@ -142,20 +254,20 @@ void userreg(){
 }
 }
 //Admin ka Kaam
+// admin homescreen
 void admin_home(){
+	system("cls");
 	int c;
 	cout<<"\t---------------- Welcome To Admin Home Screen ----------------"<<endl<<endl;
 	sleep(1);
     cout<<"\t Press 1 to Add Product"<<endl;
-    sleep(1);
 	cout<<"\t press 2 to Create New Admin"<<endl;
-    sleep(1);
 	cout<<"\t Press 3 to Logout"<<endl;
- 	sleep(1);
-	 cout<<endl<<"Enter The Number of Your choice : ";
+	sleep(1);
+	cout<<endl<<"Enter The Number of Your choice : ";
  	cin>>c;
  	if(c==1){
- 		cout<<"Add Product ka function nhi baana abhi tak";
+ 	add_product();
 	 }else if(c==2){
 	 	adminreg();
 	 }else if(c==3){
@@ -171,24 +283,26 @@ void admin_home(){
 void adminreg(){
 	string username,password,un,pw;
 	system("cls");
-	cout<<"Enter the username : ";
+	 cout<<"\t---------------- Welcome To Admin Login Page ----------------"<<endl<<endl;
+	cout<<"\tEnter the username : ";
 	cin>>username;
-	cout<<"Enter the Password : ";
+	cout<<"\tEnter the Password : ";
 	cin>>password;
 	ofstream file("adminauthrecords.txt",ios::app);
 	file<<username<<" "<<password<<endl;
-	cout<<endl<<"/tRegistration is sucessfull";
+	cout<<endl<<"\tRegistration is sucessfully";
 	sleep(2);
 	system("cls");
-		main();
+		admin_home();
 }
 void adminlogin(){
 	bool isfound =false;
 	string username,password,un,pw;
 	system("cls");
-	cout<<"Enter Your username : ";
+	 cout<<"\t---------------- Welcome To Admin Registration Page ----------------"<<endl<<endl;
+	cout<<"\tEnter Your username : ";
 	cin>>username;
-	cout<<"Enter Your Password : ";
+	cout<<"\tEnter Your Password : ";
 	cin>>password;	
 	ifstream file("adminauthrecords.txt");
  while(file>>un>>pw){ 
@@ -200,7 +314,7 @@ void adminlogin(){
     file.close();
 
     if(isfound){
-        cout<<"Successfully Login";
+        cout<<endl<<"Successfully Login";
         sleep(2);
         admin_home();
         
@@ -210,4 +324,149 @@ void adminlogin(){
 	main();
 }
 }
+//add products in cat
+void add_product(){
+//	def suporting func
+void fashion();
+void beauty();
+void electronics();
+void home_dec();
+void mobile_acces();
+	int c;
+string cat[5]={"Fashion",
+				"Mobiles and accesories",
+				"Beauty",
+				"Electronics",
+				"Home-Decoration"};
+	system("cls");
+	 cout<<"\t---------------- Choose the Category ----------------"<<endl<<endl;
+	 for(int i=0;i<5;i++){
+	 	cout<<"\tpress "<<i+1<<" for add "<<cat[i]<<" product"<<endl;
+	 }
+	 cout<<endl;
+	 cout<<"Enter Input of your choice: ";
+	 cin>>c;
+	 if(c==1){
+	 fashion();
+	 }else if(c==2){
+	 	mobile_acces();
+	 }else if(c==3){
+	 	beauty();
+	 }else if(c==4){
+	 	electronics();
+	 }else if(c==5){
+	 home_dec();
+	 }else{
+	 	cout<<"Invalid Input";
+	 	sleep(2);
+	 	product_cat();
+	 }
+}
+//supporting func for adding product
+void fashion(){
+    system("cls");
+   ofstream outfile("fashion.txt", ios::app);
+    int num;
+	string name;
+    double price;
+     cout<<"\t---------------- Add Product in Fashion Cataegory ----------------"<<endl<<endl;
+    cout<<"\tEnter how many Product you want to Enter : ";
+    cin>>num;
+	for(int i=0;i<num;i++){
+		cout<<"Number of Product "<<i+1<<endl;
+	cout << "\tEnter product name: ";
+    cin >> name;
+    cout << "\tEnter product price: ";
+    cin >> price;	
+    outfile <<name << " " << price<<endl;
+     cout<<endl << "Product added to Successfully" << endl;
+	}
+	sleep(2);
+	add_product();
+}
+void mobile_acces(){
+    system("cls");
+   ofstream outfile("mobile.txt", ios::app);
+    int num;
+	string name;
+    double price;
+     cout<<"\t---------------- Add Product in Mobiles and accesories Cataegory ----------------"<<endl<<endl;
+    cout<<"\tEnter how many Product you want to Enter : ";
+    cin>>num;
+	for(int i=0;i<num;i++){
+		cout<<"Number of Product "<<i+1<<endl;
+	cout << "\tEnter product name: ";
+    cin >> name;
+    cout << "\tEnter product price: ";
+    cin >> price;	
+    outfile <<name << " " << price<<endl;
+     cout<<endl << "Product added to Successfully" << endl;
+	}
+	sleep(2);
+	add_product();
+}
+void beauty(){
+    system("cls");
+   ofstream outfile("beauty.txt", ios::app);
+    int num;
+	string name;
+    double price;
+     cout<<"\t---------------- Add Product in Beauty Cataegory ----------------"<<endl<<endl;
+    cout<<"\tEnter how many Product you want to Enter : ";
+    cin>>num;
+	for(int i=0;i<num;i++){
+		cout<<"Number of Product "<<i+1<<endl;
+	cout << "\tEnter product name: ";
+    cin >> name;
+    cout << "\tEnter product price: ";
+    cin >> price;	
+    outfile <<name << " " << price<<endl;
+     cout<<endl << "Product added to Successfully" << endl;
+	}
+	sleep(2);
+	add_product();
+}
+void electronics(){
+    system("cls");
+   ofstream outfile("electronics.txt", ios::app);
+    int num;
+	string name;
+    double price;
+     cout<<"\t---------------- Add Product in Electronics Cataegory ----------------"<<endl<<endl;
+    cout<<"\tEnter how many Product you want to Enter : ";
+    cin>>num;
+	for(int i=0;i<num;i++){
+		cout<<"Number of Product "<<i+1<<endl;
+	cout << "\tEnter product name: ";
+    cin >> name;
+    cout << "\tEnter product price: ";
+    cin >> price;	
+    outfile <<name << " " << price<<endl;
+     cout<<endl << "Product added to Successfully" << endl;
+	}
+	sleep(2);
+	add_product();
+}
+void home_dec(){
+    system("cls");
+   ofstream outfile("home_dec.txt", ios::app);
+    int num;
+	string name;
+    double price;
+     cout<<"\t---------------- Add Product in Home and Decoration Cataegory ----------------"<<endl<<endl;
+    cout<<"\tEnter how many Product you want to Enter : ";
+    cin>>num;
+	for(int i=0;i<num;i++){
+		cout<<"Number of Product "<<i+1<<endl;
+	cout << "\tEnter product name: ";
+    cin >> name;
+    cout << "\tEnter product price: ";
+    cin >> price;	
+    outfile <<name << " " << price<<endl;
+     cout <<endl<< "Product added to Successfully" << endl;
+	}
+	sleep(2);
+	add_product();
+}
+
 
