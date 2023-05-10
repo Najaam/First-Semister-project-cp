@@ -123,8 +123,8 @@ void cat_fashion(){
  	  int count =0;
  	  while(file>>pname>>pprice){
  	  	    cout<<count+1;
- 	  	    cout << "\tProduct name: " << pname ;
-            cout << "\tProduct price: " << pprice<< endl;
+ 	  	    cout << "\tProduct name : " << pname ;
+            cout << "\tProduct price : " << pprice<< endl;
 	      count++;
 	   }
  }
@@ -137,8 +137,8 @@ void cat_mobile(){
  	  int count =0;
  	  while(file>>pname>>pprice){
  	  	    cout<<count+1;
- 	  	    cout << "\tProduct name: " << pname ;
-            cout << "\tProduct price: " << pprice<< endl;
+ 	  	    cout << "\tProduct name : " << pname ;
+            cout << "\tProduct price : " << pprice<< endl;
 	      count++;
 	   }
  }
@@ -151,8 +151,8 @@ void cat_beauty(){
  	  int count =0;
  	  while(file>>pname>>pprice){
  	  	    cout<<count+1;
- 	  	    cout << "\tProduct name: " << pname ;
-            cout << "\tProduct price: " << pprice<< endl;
+ 	  	    cout << "\tProduct name : " << pname ;
+            cout << "\tProduct price : " << pprice<< endl;
 	      count++;
 	   }
  }
@@ -165,8 +165,8 @@ void cat_electronics(){
  	  int count =0;
  	  while(file>>pname>>pprice){
  	  	    cout<<count+1;
- 	  	    cout << "\tProduct name: " << pname ;
-            cout << "\tProduct price: " << pprice<< endl;
+ 	  	    cout << "\tProduct name : " << pname ;
+            cout << "\tProduct price : " << pprice<< endl;
 	      count++;
 	   }
  }
@@ -179,8 +179,8 @@ void cat_homedec(){
  	  int count =0;
  	  while(file>>pname>>pprice){
  	  	    cout<<count+1;
- 	  	    cout << "\tProduct name: " << pname ;
-            cout << "\tProduct price: " << pprice<< endl;
+ 	  	    cout << "\tProduct name : " << pname ;
+            cout << "\tProduct price : " << pprice<< endl;
 	      count++;
 	   }
  }
