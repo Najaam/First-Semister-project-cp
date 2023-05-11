@@ -14,7 +14,8 @@ void user_home();
 void admin_home();
 void product_cat();
 void add_product();
- void billing(double&);
+void billing(double&);
+void create_userhistory(string, double& , int );
 int main(){
 	intro();	
 }
@@ -75,6 +76,15 @@ void user_home(){
 	user_home();
 	 }
 }
+// user history
+void create_userhistory(string item_name[], double& price, int count) {
+    ofstream outfile("history.txt", ios::app);
+    for(int i =0;i<count;i++){
+		outfile<<item_name[i]<<",";
+}
+       outfile<<" "<<price<<endl;
+}
+
 // viewcategory screen
 void product_cat(){
 	//function declearation
@@ -84,14 +94,16 @@ void cat_homedec();
 void cat_electronics();
 void cat_beauty();
 	int c;
-string cat[5]={"Fashion",
+string cat[6]={"Fashion",
 				"Mobiles and accesories",
 				"Beauty",
 				"Electronics",
-				"Home-Decoration"};
+				"Home-Decoration",
+				"Go back"
+				};
 	system("cls");
 	 cout<<"\t---------------- Choose the Category ----------------"<<endl<<endl;
-	 for(int i=0;i<5;i++){
+	 for(int i=0;i<6;i++){
 	 	cout<<"\tpress "<<i+1<<" for visiting "<<cat[i]<<" page"<<endl;
 	 }
 	 cout<<endl;
@@ -107,7 +119,10 @@ string cat[5]={"Fashion",
 	 	cat_electronics();
 	 }else if(c==5){
 	 	cat_homedec();
-	 }else{
+	 }else if(c==6){
+	 user_home();
+	 }
+	 else{
 	 	cout<<"Invalid Input";
 	 	sleep(2);
 	 	product_cat();
@@ -116,45 +131,49 @@ string cat[5]={"Fashion",
 }
 //fashion category screen
 void cat_fashion(){
- 	system("cls");
-	   string pname,item_name; 
+    system("cls");
+    string pname, item_name; 
     int count = 0;
+    int cnt = 0;
     bool isfound = false;
-    double pprice =0;
-    double tprice = 0;
-	   cout<<"\t---------------- Fashion Page ----------------"<<endl<<endl;
- 	  ifstream file("fashion.txt");
- 	 
- 	  while(file>>pname>>pprice){
- 	  	    cout<<count+1;
- 	  	    cout << "\tProduct name : " << pname ;
-            cout << "\tProduct price : " << pprice<< endl;
-	      count++;
-	   }
-	   cout<<endl<<"\tInput 0 if you done shopping"<<endl;
-	  while(true){
-	   cout << endl<< "\tEnter the name of the item you want to buy : ";
-	   cin >> item_name;
-	   
-	   ifstream infile("fashion.txt");
-	    while (infile >> pname >> pprice) {
-	    if (pname == item_name) {
-         isfound = true; 
-		  tprice += pprice; 
-		}
+    double pprice = 0;
+    double tprice = 0;   
+
+    cout << "\t---------------- Fashion Page ----------------" << endl << endl;
+    ifstream file("fashion.txt");
+    while (file >> pname >> pprice) {
+        cout << count+1;
+        cout << "\tProduct name : " << pname ;
+        cout << "\tProduct price : " << pprice << endl;
+        count++;
     }
-     if (isfound == true) {
-       cout << "Total Amount is : " << tprice << endl;
-    }else{
-    	cout << "Sorry, " << item_name << " not found." << endl;
-	}
-	if(item_name == "0"){
-			billing(tprice);
-		break;	
-	   }
-	  	
-	  }	   
- }
+
+    string item[count]; // moved declaration of item array after count is determined
+    cout << endl << "\tInput 0 if you are done shopping" << endl;
+    while (true) {
+        cout << endl << "\tEnter the name of the item you want to buy : ";
+        cin >> item_name;
+        ifstream infile("fashion.txt");
+        while (infile >> pname >> pprice) {
+            if (pname == item_name) {
+                isfound = true; 
+                tprice += pprice; 
+                item[cnt] = item_name; 
+                cnt++;
+            }
+        }
+        if (isfound == true) {
+            cout << "Total Amount is : " << tprice << endl;
+        } else {
+            cout << "Sorry, " << item_name << " not found." << endl;
+        }
+        if (item_name == "0") {
+            create_userhistory(item, tprice, cnt); // call function to create user history
+            billing(tprice);
+            break;
+        }
+    }	   
+}
 //Mobile category screen
 void cat_mobile(){
  	system("cls");
@@ -173,6 +192,7 @@ void cat_mobile(){
 	      count++;
 	   }
 	       cout<<endl<<"\tInput 0 if you done shopping"<<endl;
+	       cout<<endl<<"\tInput Exact same name of product shown in list"<<endl;
 	  while(true){
 	   cout << endl<< "\tEnter the name of the item you want to buy : ";
 	   cin >> item_name;
@@ -214,6 +234,7 @@ void cat_beauty(){
 	      count++;
 	   }
    cout<<endl<<"\tInput 0 if you done shopping"<<endl;
+   cout<<endl<<"\tInput Exact same name of product shown in list"<<endl;
 	  while(true){
 	   cout << endl<< "\tEnter the name of the item you want to buy : ";
 	   cin >> item_name;
@@ -245,7 +266,7 @@ void cat_electronics(){
     bool isfound = false;
     double pprice =0;
     double tprice = 0;
-	   cout<<"\t---------------- Fashion Page ----------------"<<endl<<endl;
+	   cout<<"\t---------------- Electronic Page ----------------"<<endl<<endl;
  	  ifstream file("electronics.txt");
  	 
  	  while(file>>pname>>pprice){
@@ -255,6 +276,7 @@ void cat_electronics(){
 	      count++;
 	   }
 	       cout<<endl<<"\tInput 0 if you done shopping"<<endl;
+	       cout<<endl<<"\tInput Exact same name of product shown in list"<<endl;
 	  while(true){
 	   cout << endl<< "\tEnter the name of the item you want to buy : ";
 	   cin >> item_name;
@@ -285,7 +307,7 @@ void cat_homedec(){
     bool isfound = false;
     double pprice =0;
     double tprice = 0;
-	   cout<<"\t---------------- Fashion Page ----------------"<<endl<<endl;
+	   cout<<"\t---------------- Home and decoration Page ----------------"<<endl<<endl;
  	  ifstream file("home_dec.txt");
  
  	  while(file>>pname>>pprice){
@@ -295,7 +317,8 @@ void cat_homedec(){
 	      count++;
 	   }
 	       cout<<endl<<"\tInput 0 if you done shopping"<<endl;
-	  while(true){
+	       cout<<endl<<"\tInput Exact same name of product shown in list"<<endl;
+		   	  while(true){
 	   cout << endl<< "\tEnter the name of the item you want to buy : ";
 	   cin >> item_name;
 	   
@@ -324,6 +347,12 @@ void cat_homedec(){
  	 string address;
  	 cout<<"\t---------------- Billing Page ----------------"<<endl<<endl;
  	 cout<<"Total Payable Amount is "<<price<<endl;
+	 
+	 if(price == 0){
+	 	cout<<endl<<"\tYou did not purchase any thing";
+	 	sleep(3);
+	 	product_cat();
+	 }
 	  cout<<endl<<"\tEnter Your address :";
  	 cin>>address;
  	 cout<<endl<<"\tSelect payment method"<<endl;
@@ -336,7 +365,7 @@ void cat_homedec(){
  		sleep(3);
  		product_cat();
 	 }else if(c==2){
-	 	int cvv;
+	 unsigned short	int cvv;
 		 cout<<"\tEnter the cvv number : ";
 	 	cin>>cvv;
 	   cout<<"\tPaying";
@@ -498,14 +527,16 @@ void electronics();
 void home_dec();
 void mobile_acces();
 	int c;
-string cat[5]={"Fashion",
+string cat[6]={"Fashion",
 				"Mobiles and accesories",
 				"Beauty",
 				"Electronics",
-				"Home-Decoration"};
+				"Home-Decoration",
+				"Go-Back"
+				};
 	system("cls");
 	 cout<<"\t---------------- Choose the Category ----------------"<<endl<<endl;
-	 for(int i=0;i<5;i++){
+	 for(int i=0;i<6;i++){
 	 	cout<<"\tpress "<<i+1<<" for add "<<cat[i]<<" product"<<endl;
 	 }
 	 cout<<endl;
@@ -521,10 +552,12 @@ string cat[5]={"Fashion",
 	 	electronics();
 	 }else if(c==5){
 	 home_dec();
+	 }else if(c==6){
+	 add_product();
 	 }else{
 	 	cout<<"Invalid Input";
 	 	sleep(2);
-	 	product_cat();
+	 	admin_home();
 	 }
 }
 //supporting func for adding product
