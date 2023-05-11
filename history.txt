@@ -1,1 +1,3 @@
-Shalwar-kameez,Levi-jeans, 7000
+
+najm Samsung-Galaxy-S21-Ultra,OnePlus-9-Pro, 184998
+najm Laptop,Gaming-Console,Projector, 125000
