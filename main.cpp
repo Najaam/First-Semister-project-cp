@@ -95,7 +95,7 @@ void cat_mobile(string);
 void cat_homedec(string);
 void cat_electronics(string);
 void cat_beauty(string);
-	int c;
+ int c;
 string cat[6]={"Fashion",
 				"Mobiles and accesories",
 				"Beauty",
@@ -196,6 +196,7 @@ void cat_mobile(string username){
 	   }
 	    string item[count]; // moved declaration of item array after count is determined
     cout << endl << "\tInput 0 if you are done shopping" << endl;
+    cout << endl << "\tEnter the name the Exact same name of product"<<endl;
     while (true) {
         cout << endl << "\tEnter the name of the item you want to buy : ";
         cin >> item_name;
@@ -240,6 +241,7 @@ void cat_beauty(string username){
 	   }
 	  	  string item[count]; // moved declaration of item array after count is determined
     cout << endl << "\tInput 0 if you are done shopping" << endl;
+    cout << endl << "\tEnter the name the Exact same name of product"<<endl;
     while (true) {
         cout << endl << "\tEnter the name of the item you want to buy : ";
         cin >> item_name;
@@ -273,10 +275,8 @@ void cat_electronics(string username){
     double pprice =0;
     double tprice = 0;
     int cnt = 0;
-    
 	   cout<<"\t---------------- Electronic Page ----------------"<<endl<<endl;
- 	  ifstream file("electronics.txt");
- 	 
+ 	  ifstream file("electronics.txt"); 
  	  while(file>>pname>>pprice){
  	  	    cout<<count+1;
  	  	    cout << "\tProduct name : " << pname ;
@@ -285,6 +285,7 @@ void cat_electronics(string username){
 	   }
 	      string item[count]; // moved declaration of item array after count is determined
     cout << endl << "\tInput 0 if you are done shopping" << endl;
+    cout << endl << "\tEnter the name the Exact same name of product"<<endl;
     while (true) {
         cout << endl << "\tEnter the name of the item you want to buy : ";
         cin >> item_name;
@@ -392,7 +393,6 @@ while (getline(infile, line)) {
          num_of_purchases++;
 		}
     }
-
     infile.close();
     return num_of_purchases;
 }
@@ -591,7 +591,7 @@ void adminlogin(){
 }
 //add products in cat
 void add_product(){
-//	def suporting func
+//def suporting func
 void fashion();
 void beauty();
 void electronics();

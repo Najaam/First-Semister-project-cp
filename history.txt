@@ -3,5 +3,4 @@ najm Samsung-Galaxy-S21-Ultra,OnePlus-9-Pro, 184998
 najm Laptop,Gaming-Console,Projector, 125000
 fizza Lipstick,Mascara,Foundation,Face-Wash, 3250
 najm Mascara,Blush, 1700
-
-najm Polo-shirt,Hoodie-jacket,Watch,Khari, 11200
+najm Laptop,Wireless-Earphones,Drone, 98000
