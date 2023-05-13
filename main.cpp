@@ -16,6 +16,8 @@ void product_cat(string);
 void add_product();
 void billing(double,string);
 void create_userhistory(string,double,int,string);
+void show_history(string);
+int get_num_of_purchases(string);
 int main(){
 	intro();	
 }
@@ -47,7 +49,7 @@ if(choice == 1){
 	cout<<endl<<"\t Invalid Input";
 	sleep(2);
 	system("cls");
-	intro();
+	main();
 }
 }
 // User Ka kaam
@@ -66,7 +68,7 @@ void user_home(string username){
  	if(c==1){
  	 product_cat(username);
 	 }else if(c==2){
-	 	cout<<"Purchase history ka function nhi baana abhi tak";
+	 	show_history(username);
 	 }else if(c==3){
 	 	intro();
 	 }else{
@@ -85,7 +87,6 @@ void create_userhistory(string item_name[], double price, int count,string usern
 }
        outfile<<" "<<price<<endl;
 }
-
 // viewcategory screen
 void product_cat(string username){
 	//function declearation
@@ -317,17 +318,15 @@ void cat_homedec(string username){
     double pprice =0;
     double tprice = 0;
     int cnt = 0;
-    
 	   cout<<"\t---------------- Home and decoration Page ----------------"<<endl<<endl;
  	  ifstream file("home_dec.txt");
- 
  	  while(file>>pname>>pprice){
  	  	    cout<<count+1;
  	  	    cout << "\tProduct name : " << pname ;
             cout << "\tProduct price : " << pprice<< endl;
 	      count++;
 	   }
-	       string item[count]; // moved declaration of item array after count is determined
+	     string item[count]; // moved declaration of item array after count is determined
     cout << endl << "\tInput 0 if you are done shopping" << endl;
     while (true) {
         cout << endl << "\tEnter the name of the item you want to buy : ";
@@ -353,44 +352,105 @@ void cat_homedec(string username){
         }
     }	   
  }
- void billing(double price,string username){
- 	 system("cls");
- 	 int c;
- 	 string address;
- 	 cout<<"\t---------------- Billing Page ----------------"<<endl<<endl;
- 	 cout<<"Total Payable Amount is "<<price<<endl;
-	 if(price == 0){
-	 	cout<<endl<<"\tYou did not purchase any thing";
-	 	sleep(3);
-	 	product_cat(username);
-	 }
-	  cout<<endl<<"\tEnter Your address :";
- 	 cin>>address;
- 	 cout<<endl<<"\tSelect payment method"<<endl;
- 	 cout<<"\tpress 1 for cash on deleivery"<<endl;
- 	 cout<<"\tpress 2 for Online payment"<<endl;
- 	 cout<<endl<<"Enter your choice : ";
-	  cin>>c;
- 	if(c==1){
- 		cout<<"Thanks for purchase your Pakage delevered to you as soon as possible";
- 		sleep(3);
- 		product_cat(username);
-	 }else if(c==2){
-	 unsigned short	int cvv;
-		 cout<<"\tEnter the cvv number : ";
-	 	cin>>cvv;
-	   cout<<"\tPaying";
-	   sleep(1);
-	   cout<<".";
-	    sleep(1);
-	   cout<<".";
-	    sleep(1);
-	   cout<<".";
-	   cout<<endl<<"Thanks for purchase your Pakage delevered to you as soon as possible";
-	  sleep(3);
-	  product_cat(username);
-	 }
+ //show user history
+void show_history(string username) {
+	system("cls");
+    string search_string = username;
+    ifstream file("history.txt");
+    string line;
+    bool isfound = false;
+    cout<<"\t---------------- Purchase History ----------------"<<endl<<endl;
+    while (getline(file, line)) {
+        if (line.find(search_string) != string::npos) {
+            cout <<"\t"<< line << endl;
+         isfound = true; 
+		}
+    }
+    
+    if(isfound != true){
+    	cout<<"No Purcahase History found "<<endl;
+	}
+    
+    file.close();
+ int c;
+ cout<<"Press 0 to go back : ";
+ cin>>c;
+ if(c==0){
+ 	user_home(username);
  }
+
+}
+//biling 
+//tracking number of purchases
+int get_num_of_purchases(string username) {
+    ifstream infile("history.txt");
+    string search_string = username;
+	string line;
+    int num_of_purchases = 0;
+while (getline(infile, line)) {
+        if (line.find(search_string) != string::npos) {
+         num_of_purchases++;
+		}
+    }
+
+    infile.close();
+    return num_of_purchases;
+}
+
+ void billing(double price, string username) {
+    system("cls");
+    int c;
+    string address;
+    int num_of_purchases = get_num_of_purchases(username); // a function to get the number of purchases made by the user
+    bool is_discount = false;
+
+    cout << "\t---------------- Billing Page ----------------" << endl << endl;
+    cout << "Total Payable Amount is " << price << endl;
+
+    if (price == 0) {
+        cout << endl << "\tYou did not purchase anything";
+        sleep(3);
+        product_cat(username);
+    }
+    
+    if (num_of_purchases % 4 == 0 && num_of_purchases > 0) {
+        double discount = 0.35 * price;
+        price -= discount;
+        is_discount = true;
+        cout << "Congratulations! You are eligible for a 35% discount on this purchase." << endl;
+        cout << "Your discounted price is " << price << endl;
+    }
+
+    cout << endl << "\tEnter Your address :";
+    cin >> address;
+    cout << endl << "\tSelect payment method" << endl;
+    cout << "\tpress 1 for cash on delivery" << endl;
+    cout << "\tpress 2 for Online payment" << endl;
+    cout << endl << "Enter your choice : ";
+    cin >> c;
+
+    if (c == 1) {
+        cout << "Thanks for purchase! Your package will be delivered to you as soon as possible." << endl;
+        sleep(3);
+        product_cat(username);
+    }
+    else if (c == 2) {
+        unsigned short cvv;
+        cout << "\tEnter the CVV number : ";
+        cin >> cvv;
+        cout << "\tPaying";
+        sleep(1);
+        cout << ".";
+        sleep(1);
+        cout << ".";
+        sleep(1);
+        cout << "." << endl;
+        cout << "Thanks for purchase! Your package will be delivered to you as soon as possible." << endl;
+        sleep(3);
+        product_cat(username);
+    }
+}
+
 // User role Auth
 void userlogin(){
     string username,password,un,pw;
