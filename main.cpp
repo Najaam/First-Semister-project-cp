@@ -1,6 +1,8 @@
 #include<iostream>
 #include<fstream> 	//adding for file processing system
 #include<string>
+#include<conio.h>
+#include <iomanip>
 #include <Windows.h>
 #include <unistd.h> //adding for delay
 using namespace std;
@@ -140,26 +142,27 @@ void cat_fashion(string username){
     bool isfound = false;
     double pprice = 0;
     double tprice = 0;   
-
     cout << "\t---------------- Fashion Page ----------------" << endl << endl;
     ifstream file("fashion.txt");
+     cout << "No.\tProduct name" << setw(27) << "Product price" << endl;
+    cout << setfill('-') << setw(50) << "" << setfill(' ') << endl;
     while (file >> pname >> pprice) {
-        cout << count+1;
-        cout << "\tProduct name : " << pname ;
-        cout << "\tProduct price : " << pprice << endl;
+         cout << count + 1 << "\t" << setw(30) << left << pname << right << setw(5) << pprice << endl;
         count++;
     }
-
     string item[count]; // moved declaration of item array after count is determined
     cout << endl << "\tInput 0 if you are done shopping" << endl;
-    while (true) {
+    while (true){
         cout << endl << "\tEnter the name of the item you want to buy : ";
         cin >> item_name;
         ifstream infile("fashion.txt");
         while (infile >> pname >> pprice) {
             if (pname == item_name) {
 				isfound = true; 
-                tprice += pprice; 
+				 int quantity;
+				  cout << "Enter the quantity of the item you want to buy : ";
+				 cin >> quantity;
+                tprice += pprice * quantity; 
                 item[cnt] = item_name; 
                 cnt++; 
             }
@@ -188,12 +191,12 @@ void cat_mobile(string username){
 	   cout<<"\t---------------- Mobiles and Accesories Page ----------------"<<endl<<endl;
  	  ifstream file("mobile.txt");
  	  
- 	  while(file>>pname>>pprice){
- 	  	    cout<<count+1;
- 	  	    cout << "\tProduct name : " << pname ;
-            cout << "\tProduct price : " << pprice<< endl;
-	      count++;
-	   }
+ 	     cout << "No.\tProduct name" << setw(27) << "Product price" << endl;
+    cout << setfill('-') << setw(50) << "" << setfill(' ') << endl;
+    while (file >> pname >> pprice) {
+         cout << count + 1 << "\t" << setw(30) << left << pname << right << setw(5) << pprice << endl;
+        count++;
+    }
 	    string item[count]; // moved declaration of item array after count is determined
     cout << endl << "\tInput 0 if you are done shopping" << endl;
     cout << endl << "\tEnter the name the Exact same name of product"<<endl;
@@ -202,9 +205,12 @@ void cat_mobile(string username){
         cin >> item_name;
         ifstream infile("mobile.txt");
         while (infile >> pname >> pprice) {
-            if (pname == item_name) {
+           if (pname == item_name) {
 				isfound = true; 
-                tprice += pprice; 
+				 int quantity;
+				  cout << "Enter the quantity of the item you want to buy : ";
+				 cin >> quantity;
+                tprice += pprice * quantity; 
                 item[cnt] = item_name; 
                 cnt++; 
             }
@@ -233,12 +239,12 @@ void cat_beauty(string username){
     
 	   cout<<"\t---------------- Beauty Page ----------------"<<endl<<endl;
  	  ifstream file("beauty.txt");
- 	  while(file>>pname>>pprice){
- 	  	    cout<<count+1;
- 	  	    cout << "\tProduct name : " << pname ;
-            cout << "\tProduct price : " << pprice<< endl;
-	      count++;
-	   }
+ 	      cout << "No.\tProduct name" << setw(27) << "Product price" << endl;
+    cout << setfill('-') << setw(50) << "" << setfill(' ') << endl;
+    while (file >> pname >> pprice) {
+         cout << count + 1 << "\t" << setw(30) << left << pname << right << setw(5) << pprice << endl;
+        count++;
+    }
 	  	  string item[count]; // moved declaration of item array after count is determined
     cout << endl << "\tInput 0 if you are done shopping" << endl;
     cout << endl << "\tEnter the name the Exact same name of product"<<endl;
@@ -247,9 +253,12 @@ void cat_beauty(string username){
         cin >> item_name;
         ifstream infile("beauty.txt");
         while (infile >> pname >> pprice) {
-            if (pname == item_name) {
+           if (pname == item_name) {
 				isfound = true; 
-                tprice += pprice; 
+				 int quantity;
+				  cout << "Enter the quantity of the item you want to buy : ";
+				 cin >> quantity;
+                tprice += pprice * quantity; 
                 item[cnt] = item_name; 
                 cnt++; 
             }
@@ -277,12 +286,12 @@ void cat_electronics(string username){
     int cnt = 0;
 	   cout<<"\t---------------- Electronic Page ----------------"<<endl<<endl;
  	  ifstream file("electronics.txt"); 
- 	  while(file>>pname>>pprice){
- 	  	    cout<<count+1;
- 	  	    cout << "\tProduct name : " << pname ;
-            cout << "\tProduct price : " << pprice<< endl;
-	      count++;
-	   }
+ 	       cout << "No.\tProduct name" << setw(27) << "Product price" << endl;
+    cout << setfill('-') << setw(50) << "" << setfill(' ') << endl;
+    while (file >> pname >> pprice) {
+         cout << count + 1 << "\t" << setw(30) << left << pname << right << setw(5) << pprice << endl;
+        count++;
+    }
 	      string item[count]; // moved declaration of item array after count is determined
     cout << endl << "\tInput 0 if you are done shopping" << endl;
     cout << endl << "\tEnter the name the Exact same name of product"<<endl;
@@ -291,9 +300,12 @@ void cat_electronics(string username){
         cin >> item_name;
         ifstream infile("electronics.txt");
         while (infile >> pname >> pprice) {
-            if (pname == item_name) {
+          if (pname == item_name) {
 				isfound = true; 
-                tprice += pprice; 
+				 int quantity;
+				  cout << "Enter the quantity of the item you want to buy : ";
+				 cin >> quantity;
+                tprice += pprice * quantity; 
                 item[cnt] = item_name; 
                 cnt++; 
             }
@@ -321,12 +333,12 @@ void cat_homedec(string username){
     int cnt = 0;
 	   cout<<"\t---------------- Home and decoration Page ----------------"<<endl<<endl;
  	  ifstream file("home_dec.txt");
- 	  while(file>>pname>>pprice){
- 	  	    cout<<count+1;
- 	  	    cout << "\tProduct name : " << pname ;
-            cout << "\tProduct price : " << pprice<< endl;
-	      count++;
-	   }
+ 	       cout << "No.\tProduct name" << setw(27) << "Product price" << endl;
+    cout << setfill('-') << setw(50) << "" << setfill(' ') << endl;
+    while (file >> pname >> pprice) {
+         cout << count + 1 << "\t" << setw(30) << left << pname << right << setw(5) << pprice << endl;
+        count++;
+    }
 	     string item[count]; // moved declaration of item array after count is determined
     cout << endl << "\tInput 0 if you are done shopping" << endl;
     while (true) {
@@ -334,9 +346,12 @@ void cat_homedec(string username){
         cin >> item_name;
         ifstream infile("home_dec.txt");
         while (infile >> pname >> pprice) {
-            if (pname == item_name) {
+           if (pname == item_name) {
 				isfound = true; 
-                tprice += pprice; 
+				 int quantity;
+				  cout << "Enter the quantity of the item you want to buy : ";
+				 cin >> quantity;
+                tprice += pprice * quantity; 
                 item[cnt] = item_name; 
                 cnt++; 
             }
@@ -366,12 +381,10 @@ void show_history(string username) {
             cout <<"\t"<< line << endl;
          isfound = true; 
 		}
-    }
-    
+    }    
     if(isfound != true){
     	cout<<"No Purcahase History found "<<endl;
 	}
-    
     file.close();
  int c;
  cout<<"Press 0 to go back : ";
@@ -379,7 +392,6 @@ void show_history(string username) {
  if(c==0){
  	user_home(username);
  }
-
 }
 //biling 
 //tracking number of purchases
@@ -454,13 +466,26 @@ while (getline(infile, line)) {
 // User role Auth
 void userlogin(){
     string username,password,un,pw;
+    int ch;
     bool isfound = false;
      system("cls");
     cout<<"\t---------------- Welcome To User Login Page ----------------"<<endl<<endl;
     cout<<"\tEnter Your username : ";
     cin>>username;
     cout<<"\tEnter Your Password : ";
-    cin>>password;
+    ch = getch();
+   while (ch != 13) {
+        if (ch == 8) {
+            if (!password.empty()) {
+                cout << "\b \b"; // Erase the character from the screen
+                password.erase(password.size() - 1); 
+            }
+        } else {
+            password.push_back(ch);
+            cout << '*';
+        }
+        ch = _getch();
+    }
     ifstream file("userauthrecords.txt");
     while(file>>un>>pw){ 
         if(un == username && pw == password){
@@ -471,7 +496,7 @@ void userlogin(){
     file.close();
 
     if(isfound){
-        cout<<"Successfully Login";
+        cout<<endl<<"Successfully Login";
         sleep(2);
         user_home(username); 
     }else{
@@ -497,13 +522,26 @@ void userlogin(){
 }
 void userreg(){
 	string username,password,un,pw;
-	int c;
+	int c,ch;
 	system("cls");
 	cout<<"\t---------------- Welcome To User Registeration Page ----------------"<<endl<<endl;
-	cout<<"\tEnter the username : ";
-	cin>>username;
-	cout<<"\tEnter the Password : ";
-	cin>>password;
+
+    cout<<"\tEnter Your username : ";
+    cin>>username;
+    cout<<"\tEnter Your Password : ";
+    ch = getch();
+   while (ch != 13) {
+        if (ch == 8) {
+            if (!password.empty()) {
+                cout << "\b \b"; // Erase the character from the screen
+                password.erase(password.size() - 1); 
+            }
+        } else {
+            password.push_back(ch);
+            cout << '*';
+        }
+        ch = _getch();
+    }
 	ofstream file("userauthrecords.txt",ios::app);
 	file<<username<<" "<<password<<endl;
 	cout<<endl;
@@ -574,15 +612,13 @@ void adminlogin(){
         if(un == username && pw == password){
             isfound = true;
             break;
-        }
+    }
     }
     file.close();
-
     if(isfound){
         cout<<endl<<"Successfully Login";
         sleep(2);
         admin_home();
-        
     }else{
         cout<<endl<<"\tWrong Username Or Password try Again"<<endl;
 	sleep(2);
@@ -624,7 +660,7 @@ string cat[6]={"Fashion",
 	 }else if(c==5){
 	 home_dec();
 	 }else if(c==6){
-	 add_product();
+	 admin_home();
 	 }else{
 	 	cout<<"Invalid Input";
 	 	sleep(2);

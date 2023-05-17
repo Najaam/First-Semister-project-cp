@@ -4,3 +4,7 @@ najm Laptop,Gaming-Console,Projector, 125000
 fizza Lipstick,Mascara,Foundation,Face-Wash, 3250
 najm Mascara,Blush, 1700
 najm Laptop,Wireless-Earphones,Drone, 98000
+rija Shalwar-kameez, 3200
+rija Lipstick, 750
+rija Blush, 800
+rija Laptop,Fitness-Tracker,Drone, 96000
