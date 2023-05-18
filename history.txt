@@ -8,3 +8,8 @@ rija Shalwar-kameez, 3200
 rija Lipstick, 750
 rija Blush, 800
 rija Laptop,Fitness-Tracker,Drone, 96000
+najm Levi-jeans, 19000
+najm Dress-pant,Sports-shorts,Shalwar-kameez, 18600
+najm Flip-flops, 2400
+najm Sports-shorts, 4200
+najm Oppo-Find-X3-Pro, 259980

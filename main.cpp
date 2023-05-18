@@ -134,51 +134,63 @@ string cat[6]={"Fashion",
 
 }
 //fashion category screen
-void cat_fashion(string username){
+void cat_fashion(string username) {
     system("cls");
-    string pname, item_name; 
+    string pname, item_name;
     int count = 0;
     int cnt = 0;
     bool isfound = false;
     double pprice = 0;
-    double tprice = 0;   
+    double tprice = 0;
     cout << "\t---------------- Fashion Page ----------------" << endl << endl;
     ifstream file("fashion.txt");
-     cout << "No.\tProduct name" << setw(27) << "Product price" << endl;
+    cout << "No.\tProduct name" << setw(27) << "Product price" << endl;
     cout << setfill('-') << setw(50) << "" << setfill(' ') << endl;
     while (file >> pname >> pprice) {
-         cout << count + 1 << "\t" << setw(30) << left << pname << right << setw(5) << pprice << endl;
+        cout << count + 1 << "\t" << setw(30) << left << pname << right << setw(5) << pprice << endl;
         count++;
     }
-    string item[count]; // moved declaration of item array after count is determined
+    string item[count]; 
     cout << endl << "\tInput 0 if you are done shopping" << endl;
-    while (true){
-        cout << endl << "\tEnter the name of the item you want to buy : ";
-        cin >> item_name;
-        ifstream infile("fashion.txt");
-        while (infile >> pname >> pprice) {
-            if (pname == item_name) {
-				isfound = true; 
-				 int quantity;
-				  cout << "Enter the quantity of the item you want to buy : ";
-				 cin >> quantity;
-                tprice += pprice * quantity; 
-                item[cnt] = item_name; 
-                cnt++; 
-            }
-        }
-        if (isfound == true) {
-            cout << "Total Amount is : " << tprice << endl;
-        } else {
-            cout << "Sorry, " << item_name << " not found." << endl;
-        }
-        if (item_name == "0") {
-            create_userhistory(item, tprice, cnt,username); // call function to create user history
-            billing(tprice,username);// call function for billling
+    while (true) {
+        int item_index; // declare item_index variable
+        cout << endl << "\tEnter the index of the item you want to buy (1-" << count << "): ";
+        cin >> item_index;
+
+        if (item_index == 0) {
+            create_userhistory(item, tprice, cnt, username); 
+            billing(tprice, username);
             break;
+        } else if (item_index < 1 || item_index > count) {
+            cout << "Invalid item index. Please try again." << endl;
+            continue;
         }
-    }	   
+        
+        item_index--;
+
+        ifstream infile("fashion.txt");
+        int current_index = 0;
+        while (infile >> pname >> pprice) {
+            if (current_index == item_index) {
+                isfound = true;
+                int quantity;
+                cout << "Enter the quantity of the item you want to buy: ";
+                cin >> quantity;
+                tprice += pprice * quantity;
+                item[cnt] = pname;
+                cnt++;
+                break; 
+            }
+            current_index++;
+        }
+        if (isfound) {
+            cout << "Total Amount is: " << tprice << endl;
+        } else {
+            cout << "Invalid item index. Please try again." << endl;
+        }
+    }
 }
+
 //Mobile category screen
 void cat_mobile(string username){
  	system("cls");
@@ -200,30 +212,41 @@ void cat_mobile(string username){
 	    string item[count]; // moved declaration of item array after count is determined
     cout << endl << "\tInput 0 if you are done shopping" << endl;
     cout << endl << "\tEnter the name the Exact same name of product"<<endl;
-    while (true) {
-        cout << endl << "\tEnter the name of the item you want to buy : ";
-        cin >> item_name;
-        ifstream infile("mobile.txt");
-        while (infile >> pname >> pprice) {
-           if (pname == item_name) {
-				isfound = true; 
-				 int quantity;
-				  cout << "Enter the quantity of the item you want to buy : ";
-				 cin >> quantity;
-                tprice += pprice * quantity; 
-                item[cnt] = item_name; 
-                cnt++; 
-            }
-        }
-        if (isfound == true) {
-            cout << "Total Amount is : " << tprice << endl;
-        } else {
-            cout << "Sorry, " << item_name << " not found." << endl;
-        }
-        if (item_name == "0") {
-            create_userhistory(item, tprice, cnt,username); // call function to create user history
-            billing(tprice,username);// call function for billling
+     while (true) {
+        int item_index; // declare item_index variable
+        cout << endl << "\tEnter the index of the item you want to buy (1-" << count << "): ";
+        cin >> item_index;
+
+        if (item_index == 0) {
+            create_userhistory(item, tprice, cnt, username); 
+            billing(tprice, username);
             break;
+        } else if (item_index < 1 || item_index > count) {
+            cout << "Invalid item index. Please try again." << endl;
+            continue;
+        }
+        
+        item_index--;
+
+        ifstream infile("mobile.txt");
+        int current_index = 0;
+        while (infile >> pname >> pprice) {
+            if (current_index == item_index) {
+                isfound = true;
+                int quantity;
+                cout << "Enter the quantity of the item you want to buy: ";
+                cin >> quantity;
+                tprice += pprice * quantity;
+                item[cnt] = pname;
+                cnt++;
+                break; 
+            }
+            current_index++;
+        }
+        if (isfound) {
+            cout << "Total Amount is: " << tprice << endl;
+        } else {
+            cout << "Invalid item index. Please try again." << endl;
         }
     }	     
  }
@@ -249,31 +272,42 @@ void cat_beauty(string username){
     cout << endl << "\tInput 0 if you are done shopping" << endl;
     cout << endl << "\tEnter the name the Exact same name of product"<<endl;
     while (true) {
-        cout << endl << "\tEnter the name of the item you want to buy : ";
-        cin >> item_name;
-        ifstream infile("beauty.txt");
-        while (infile >> pname >> pprice) {
-           if (pname == item_name) {
-				isfound = true; 
-				 int quantity;
-				  cout << "Enter the quantity of the item you want to buy : ";
-				 cin >> quantity;
-                tprice += pprice * quantity; 
-                item[cnt] = item_name; 
-                cnt++; 
-            }
-        }
-        if (isfound == true) {
-            cout << "Total Amount is : " << tprice << endl;
-        } else {
-            cout << "Sorry, " << item_name << " not found." << endl;
-        }
-        if (item_name == "0") {
-            create_userhistory(item, tprice, cnt,username); // call function to create user history
-            billing(tprice,username);// call function for billling
+        int item_index; // declare item_index variable
+        cout << endl << "\tEnter the index of the item you want to buy (1-" << count << "): ";
+        cin >> item_index;
+
+        if (item_index == 0) {
+            create_userhistory(item, tprice, cnt, username); 
+            billing(tprice, username);
             break;
+        } else if (item_index < 1 || item_index > count) {
+            cout << "Invalid item index. Please try again." << endl;
+            continue;
         }
-    }	   
+        
+        item_index--;
+
+        ifstream infile("beauty.txt");
+        int current_index = 0;
+        while (infile >> pname >> pprice) {
+            if (current_index == item_index) {
+                isfound = true;
+                int quantity;
+                cout << "Enter the quantity of the item you want to buy: ";
+                cin >> quantity;
+                tprice += pprice * quantity;
+                item[cnt] = pname;
+                cnt++;
+                break; 
+            }
+            current_index++;
+        }
+        if (isfound) {
+            cout << "Total Amount is: " << tprice << endl;
+        } else {
+            cout << "Invalid item index. Please try again." << endl;
+        }
+    }
  }
  //electronics category screen
 void cat_electronics(string username){
@@ -292,35 +326,46 @@ void cat_electronics(string username){
          cout << count + 1 << "\t" << setw(30) << left << pname << right << setw(5) << pprice << endl;
         count++;
     }
-	      string item[count]; // moved declaration of item array after count is determined
+	      string item[count]; 
     cout << endl << "\tInput 0 if you are done shopping" << endl;
     cout << endl << "\tEnter the name the Exact same name of product"<<endl;
     while (true) {
-        cout << endl << "\tEnter the name of the item you want to buy : ";
-        cin >> item_name;
-        ifstream infile("electronics.txt");
-        while (infile >> pname >> pprice) {
-          if (pname == item_name) {
-				isfound = true; 
-				 int quantity;
-				  cout << "Enter the quantity of the item you want to buy : ";
-				 cin >> quantity;
-                tprice += pprice * quantity; 
-                item[cnt] = item_name; 
-                cnt++; 
-            }
-        }
-        if (isfound == true) {
-            cout << "Total Amount is : " << tprice << endl;
-        } else {
-            cout << "Sorry, " << item_name << " not found." << endl;
-        }
-        if (item_name == "0") {
-            create_userhistory(item, tprice, cnt,username); // call function to create user history
-            billing(tprice,username);// call function for billling
+        int item_index; 
+        cout << endl << "\tEnter the index of the item you want to buy (1-" << count << "): ";
+        cin >> item_index;
+
+        if (item_index == 0) {
+            create_userhistory(item, tprice, cnt, username); 
+            billing(tprice, username);
             break;
+        } else if (item_index < 1 || item_index > count) {
+            cout << "Invalid item index. Please try again." << endl;
+            continue;
         }
-    }	   
+        
+        item_index--;
+
+        ifstream infile("electronics.txt");
+        int current_index = 0;
+        while (infile >> pname >> pprice) {
+            if (current_index == item_index) {
+                isfound = true;
+                int quantity;
+                cout << "Enter the quantity of the item you want to buy: ";
+                cin >> quantity;
+                tprice += pprice * quantity;
+                item[cnt] = pname;
+                cnt++;
+                break; 
+            }
+            current_index++;
+        }
+        if (isfound) {
+            cout << "Total Amount is: " << tprice << endl;
+        } else {
+            cout << "Invalid item index. Please try again." << endl;
+        }
+    } 
  }
  //home and decor category screen
 void cat_homedec(string username){
@@ -341,32 +386,43 @@ void cat_homedec(string username){
     }
 	     string item[count]; // moved declaration of item array after count is determined
     cout << endl << "\tInput 0 if you are done shopping" << endl;
-    while (true) {
-        cout << endl << "\tEnter the name of the item you want to buy : ";
-        cin >> item_name;
-        ifstream infile("home_dec.txt");
-        while (infile >> pname >> pprice) {
-           if (pname == item_name) {
-				isfound = true; 
-				 int quantity;
-				  cout << "Enter the quantity of the item you want to buy : ";
-				 cin >> quantity;
-                tprice += pprice * quantity; 
-                item[cnt] = item_name; 
-                cnt++; 
-            }
-        }
-        if (isfound == true) {
-            cout << "Total Amount is : " << tprice << endl;
-        } else {
-            cout << "Sorry, " << item_name << " not found." << endl;
-        }
-        if (item_name == "0") {
-            create_userhistory(item, tprice, cnt,username); // call function to create user history
-            billing(tprice,username);// call function for billling
+     while (true) {
+        int item_index; // declare item_index variable
+        cout << endl << "\tEnter the index of the item you want to buy (1-" << count << "): ";
+        cin >> item_index;
+
+        if (item_index == 0) {
+            create_userhistory(item, tprice, cnt, username); 
+            billing(tprice, username);
             break;
+        } else if (item_index < 1 || item_index > count) {
+            cout << "Invalid item index. Please try again." << endl;
+            continue;
         }
-    }	   
+        
+        item_index--;
+
+        ifstream infile("home_dec.txt");
+        int current_index = 0;
+        while (infile >> pname >> pprice) {
+            if (current_index == item_index) {
+                isfound = true;
+                int quantity;
+                cout << "Enter the quantity of the item you want to buy: ";
+                cin >> quantity;
+                tprice += pprice * quantity;
+                item[cnt] = pname;
+                cnt++;
+                break; 
+            }
+            current_index++;
+        }
+        if (isfound) {
+            cout << "Total Amount is: " << tprice << endl;
+        } else {
+            cout << "Invalid item index. Please try again." << endl;
+        }
+    }  
  }
  //show user history
 void show_history(string username) {
