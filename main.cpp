@@ -611,7 +611,7 @@ void userreg(){
 	}
 		
 }
-}
+
 //Admin ka Kaam
 // admin homescreen
 void admin_home(){
@@ -632,7 +632,7 @@ void admin_home(){
 	 	intro();
 	 }else{
 	cout<<"\t Invalid Input"<<endl;
-
+	sleep(2);
 	system("cls");
 	admin_home();
 	 }
@@ -649,7 +649,7 @@ void adminreg(){
 	ofstream file("adminauthrecords.txt",ios::app);
 	file<<username<<" "<<password<<endl;
 	cout<<endl<<"\tRegistration is sucessfully";
-
+	sleep(2);
 	system("cls");
 		admin_home();
 }
@@ -672,11 +672,11 @@ void adminlogin(){
     file.close();
     if(isfound){
         cout<<endl<<"Successfully Login";
-        
+        sleep(2);
         admin_home();
     }else{
         cout<<endl<<"\tWrong Username Or Password try Again"<<endl;
-
+	sleep(2);
 	main();
 }
 }
@@ -718,7 +718,7 @@ string cat[6]={"Fashion",
 	 admin_home();
 	 }else{
 	 	cout<<"Invalid Input";
-	 
+	 	sleep(2);
 	 	admin_home();
 	 }
 }
@@ -743,7 +743,7 @@ void fashion(){
     outfile <<name << " " << price<<endl;
      cout<<endl << "Product added to Successfully" << endl;
 	}
-	
+	sleep(2);
 	add_product();
 }
 void mobile_acces(){
@@ -765,7 +765,7 @@ void mobile_acces(){
     outfile <<name << " " << price<<endl;
      cout<<endl << "Product added to Successfully" << endl;
 	}
-
+	sleep(2);
 	add_product();
 }
 void beauty(){
@@ -787,7 +787,7 @@ void beauty(){
     outfile <<name << " " << price<<endl;
      cout<<endl << "Product added to Successfully" << endl;
 	}
-
+	sleep(2);
 	add_product();
 }
 void electronics(){
@@ -809,7 +809,7 @@ void electronics(){
     outfile <<name << " " << price<<endl;
      cout<<endl << "Product added to Successfully" << endl;
 	}
-	
+	sleep(2);
 	add_product();
 }
 void home_dec(){
@@ -831,6 +831,6 @@ void home_dec(){
     outfile <<name << " " << price<<endl;
     cout <<endl<< "Product added to Successfully" << endl;
 	}
-	
+	sleep(2);
 	add_product();
 }
