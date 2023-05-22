@@ -30,13 +30,13 @@ void intro(){
 	system("Color 0B");
 
 cout<<"\t---------------- Welcome To My Mart ----------------"<<endl<<endl;
-sleep(1);
+
 cout<<"\tPress 1 for Login"<<endl;
 cout<<"\tpress 2 for Registraion"<<endl;
 cout<<"\tpress 3 for Admin Login"<<endl;
 cout<<"\tPress 4 to Quit App"<<endl;
 cout<<endl;
-sleep(1);
+
 cout<<"Enter Number of Your choice : ";
 	cin>>choice;
 if(choice == 1){
@@ -49,8 +49,6 @@ if(choice == 1){
 	cout<<"Thankyou Visit us again";
 }else{
 	cout<<endl<<"\t Invalid Input";
-	sleep(2);
-	system("cls");
 	main();
 }
 }
@@ -60,11 +58,11 @@ void user_home(string username){
 	system("cls");
 	int c;
 	cout<<"\t---------------- Welcome To User Home Screen ----------------"<<endl<<endl;
-	sleep(1);
+
     cout<<"\t Press 1 to view Product Categories"<<endl;
 	cout<<"\t press 2 to view Puchase History"<<endl;
 	cout<<"\t Press 3 to Logout"<<endl;
- 	sleep(1);
+ 
 	 cout<<endl<<"Enter The Number of Your choice : ";
  	cin>>c;
  	if(c==1){
@@ -75,7 +73,7 @@ void user_home(string username){
 	 	intro();
 	 }else{
 	cout<<"\t Invalid Input"<<endl;
-	sleep(2);
+
 	system("cls");
 	user_home(username);
 	 }
@@ -128,7 +126,7 @@ string cat[6]={"Fashion",
 	 }
 	 else{
 	 	cout<<"Invalid Input";
-	 	sleep(2);
+	 
 	 	product_cat(username);
 	 }
 
@@ -477,7 +475,7 @@ while (getline(infile, line)) {
 
     if (price == 0) {
         cout << endl << "\tYou did not purchase anything";
-        sleep(3);
+        
         product_cat(username);
     }
     
@@ -499,23 +497,27 @@ while (getline(infile, line)) {
 
     if (c == 1) {
         cout << "Thanks for purchase! Your package will be delivered to you as soon as possible." << endl;
-        sleep(3);
-        product_cat(username);
+        int ch;
+       cout<<"Press 0 to return : ";
+    if(ch==0){
+    	product_cat(username);
+	}
+		
     }
     else if (c == 2) {
         unsigned short cvv;
         cout << "\tEnter the CVV number : ";
         cin >> cvv;
         cout << "\tPaying";
-        sleep(1);
         cout << ".";
-        sleep(1);
         cout << ".";
-        sleep(1);
         cout << "." << endl;
         cout << "Thanks for purchase! Your package will be delivered to you as soon as possible." << endl;
-        sleep(3);
-        product_cat(username);
+          int ch;
+       cout<<"Press 0 to return : ";
+    if(ch==0){
+    	product_cat(username);
+	}
     }
 }
 
@@ -553,15 +555,15 @@ void userlogin(){
 
     if(isfound){
         cout<<endl<<"Successfully Login";
-        sleep(2);
+        
         user_home(username); 
     }else{
        int c;
         cout<<endl<<"\tWrong Username Or Password try Again"<<endl;
-        sleep(1);
+       
 		cout<<endl<<"\tWant to Redirect Welcome Screen press 1"<<endl;
 		cout<<"\tWant to Redirect User Registertation Screen press 2"<<endl;
-		sleep(1);
+	
 		cout<<endl<<"Enter Number of Your choice : ";
 		cin>>c;	
 		if(c==1){
@@ -570,7 +572,7 @@ void userlogin(){
 			userreg();
 		}else{
 			cout<<"\tInvalid Input";
-			sleep(2);
+			
 			system("cls");
 			main();
 		}
@@ -606,10 +608,8 @@ void userreg(){
 	cin>>c;
 	if(c==1){
 		userlogin();
-	}else{
-		cout<<"Invalid Input";
-		sleep(2);
-		main();
+	}
+		
 }
 }
 //Admin ka Kaam
@@ -618,11 +618,10 @@ void admin_home(){
 	system("cls");
 	int c;
 	cout<<"\t---------------- Welcome To Admin Home Screen ----------------"<<endl<<endl;
-	sleep(1);
     cout<<"\t Press 1 to Add Product"<<endl;
 	cout<<"\t press 2 to Create New Admin"<<endl;
 	cout<<"\t Press 3 to Logout"<<endl;
-	sleep(1);
+
 	cout<<endl<<"Enter The Number of Your choice : ";
  	cin>>c;
  	if(c==1){
@@ -633,7 +632,7 @@ void admin_home(){
 	 	intro();
 	 }else{
 	cout<<"\t Invalid Input"<<endl;
-	sleep(2);
+
 	system("cls");
 	admin_home();
 	 }
@@ -650,7 +649,7 @@ void adminreg(){
 	ofstream file("adminauthrecords.txt",ios::app);
 	file<<username<<" "<<password<<endl;
 	cout<<endl<<"\tRegistration is sucessfully";
-	sleep(2);
+
 	system("cls");
 		admin_home();
 }
@@ -673,11 +672,11 @@ void adminlogin(){
     file.close();
     if(isfound){
         cout<<endl<<"Successfully Login";
-        sleep(2);
+        
         admin_home();
     }else{
         cout<<endl<<"\tWrong Username Or Password try Again"<<endl;
-	sleep(2);
+
 	main();
 }
 }
@@ -719,7 +718,7 @@ string cat[6]={"Fashion",
 	 admin_home();
 	 }else{
 	 	cout<<"Invalid Input";
-	 	sleep(2);
+	 
 	 	admin_home();
 	 }
 }
@@ -744,7 +743,7 @@ void fashion(){
     outfile <<name << " " << price<<endl;
      cout<<endl << "Product added to Successfully" << endl;
 	}
-	sleep(2);
+	
 	add_product();
 }
 void mobile_acces(){
@@ -766,7 +765,7 @@ void mobile_acces(){
     outfile <<name << " " << price<<endl;
      cout<<endl << "Product added to Successfully" << endl;
 	}
-	sleep(2);
+
 	add_product();
 }
 void beauty(){
@@ -788,7 +787,7 @@ void beauty(){
     outfile <<name << " " << price<<endl;
      cout<<endl << "Product added to Successfully" << endl;
 	}
-	sleep(2);
+
 	add_product();
 }
 void electronics(){
@@ -810,7 +809,7 @@ void electronics(){
     outfile <<name << " " << price<<endl;
      cout<<endl << "Product added to Successfully" << endl;
 	}
-	sleep(2);
+	
 	add_product();
 }
 void home_dec(){
@@ -832,6 +831,6 @@ void home_dec(){
     outfile <<name << " " << price<<endl;
     cout <<endl<< "Product added to Successfully" << endl;
 	}
-	sleep(2);
+	
 	add_product();
 }
