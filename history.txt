@@ -13,3 +13,8 @@ najm Dress-pant,Sports-shorts,Shalwar-kameez, 18600
 najm Flip-flops, 2400
 najm Sports-shorts, 4200
 najm Oppo-Find-X3-Pro, 259980
+ali Laptop,Wireless-Earphones, 173000
+najm Lipstick, 2250
+najm Desktop-Computer, 45000
+najm Laptop, 660000
+najm Shalwar-kameez, 262400

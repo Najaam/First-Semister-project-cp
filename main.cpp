@@ -499,6 +499,7 @@ while (getline(infile, line)) {
         cout << "Thanks for purchase! Your package will be delivered to you as soon as possible." << endl;
         int ch;
        cout<<"Press 0 to return : ";
+       cin>>ch;
     if(ch==0){
     	product_cat(username);
 	}
@@ -515,6 +516,7 @@ while (getline(infile, line)) {
         cout << "Thanks for purchase! Your package will be delivered to you as soon as possible." << endl;
           int ch;
        cout<<"Press 0 to return : ";
+       cin>>ch;
     if(ch==0){
     	product_cat(username);
 	}
