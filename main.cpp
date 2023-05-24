@@ -580,22 +580,24 @@ void userlogin(){
 		}
 }
 }
-void userreg(){
-	string username,password,un,pw;
-	bool isfound =false;
-	int c,ch;
-	system("cls");
-	cout<<"\t---------------- Welcome To User Registeration Page ----------------"<<endl<<endl;
 
-    cout<<"\tEnter Your username : ";
-    cin>>username;
-    cout<<"\tEnter Your Password : ";
-    ch = getch();
-   while (ch != 13) {
+void userreg() {
+    string username, password, un, pw;
+    bool isfound = false;
+    int c, ch;
+    system("cls");
+    cout << "\t---------------- Welcome To User Registration Page ----------------" << endl
+         << endl;
+
+    cout << "\tEnter Your username : ";
+    cin >> username;
+    cout << "\tEnter Your Password : ";
+    ch = _getch();
+    while (ch != 13) {
         if (ch == 8) {
             if (!password.empty()) {
                 cout << "\b \b"; // Erase the character from the screen
-                password.erase(password.size() - 1); 
+                password.erase(password.size() - 1);
             }
         } else {
             password.push_back(ch);
@@ -604,34 +606,35 @@ void userreg(){
         ch = _getch();
     }
     ifstream file("userauthrecords.txt");
-      while(file>>un>>pw){ 
-        if(un == username && pw == password){
+    while (file >> un >> pw) {
+        if (un == username && pw == password) {
             isfound = true;
-           
-        }else{
-        	isfound = false;
-		}
+            break;
+        } else {
+            isfound = false;
+        }
     }
-    if(isfound = true){
-    	cout<<endl<<"You are already Registerd";
-    	cout<<endl<<endl<<"Press 1 for Login Screen : ";
-	cin>>c;
-	if(c==1){
-		userlogin();
-	}
-	}else{
-		ofstream files("userauthrecords.txt",ios::app);
-	files<<username<<" "<<password<<endl;
-	cout<<endl;
-	cout<<"\tRegisteration Sucessfull! Now u can Login and Enjoy our services";
-	cout<<endl<<endl<<"Press 1 for Login Screen : ";
-	cin>>c;
-	if(c==1){
-		userlogin();
-	}
-	}
-	
-		
+    file.close();
+
+    if (isfound) {
+        cout << endl << "You are already registered." << endl;
+        cout << endl << "Press 1 for Login Screen: ";
+        cin >> c;
+        if (c == 1) {
+            userlogin();
+        }
+    } else {
+        ofstream files("userauthrecords.txt", ios::app);
+        files << username << " " << password << endl;
+        files.close();
+        cout << endl;
+        cout << "\tRegistration Successful! Now you can login and enjoy our services." << endl;
+        cout << endl << "Press 1 for Login Screen: ";
+        cin >> c;
+        if (c == 1) {
+            userlogin();
+        }
+    }
 }
 
 //Admin ka Kaam
@@ -661,20 +664,22 @@ void admin_home(){
 }
 // Admin role Auth
 void adminreg(){
-	string username,password,un,pw;
-	bool isfound;
-	int ch,c;
-	system("cls");
-	 cout<<"\t---------------- Welcome To Admin Login Page ----------------"<<endl<<endl;
-	cout<<"\tEnter the username : ";
-	cin>>username;
-	cout<<"\tEnter the Password : ";
-	  ch = getch();
-   while (ch != 13) {
+	 string username, password, un, pw;
+    bool isfound = false;
+    int c, ch;
+    system("cls");
+    cout << "\t---------------- Welcome To User Registration Page ----------------" << endl
+         << endl;
+
+    cout << "\tEnter Your username : ";
+    cin >> username;
+    cout << "\tEnter Your Password : ";
+    ch = _getch();
+    while (ch != 13) {
         if (ch == 8) {
             if (!password.empty()) {
                 cout << "\b \b"; // Erase the character from the screen
-                password.erase(password.size() - 1); 
+                password.erase(password.size() - 1);
             }
         } else {
             password.push_back(ch);
@@ -682,29 +687,36 @@ void adminreg(){
         }
         ch = _getch();
     }
-     ifstream files("userauthrecords.txt");
-      while(files>>un>>pw){ 
-        if(un == username && pw == password){
+    ifstream file("userauthrecords.txt");
+    while (file >> un >> pw) {
+        if (un == username && pw == password) {
             isfound = true;
-           
-        }else{
-        	isfound = false;
-		}
+            break;
+        } else {
+            isfound = false;
+        }
     }
-    if(isfound = true){
-    	cout<<endl<<"You are already Registerd";
-    	cout<<endl<<endl<<"Press 1 to Go back : ";
-	cin>>c;
-	if(c==1){
-		admin_home();
-	}
-	}
-	ofstream file("adminauthrecords.txt",ios::app);
-	file<<username<<" "<<password<<endl;
-	cout<<endl<<"\tRegistration is sucessfully";
-	sleep(2);
-	system("cls");
-		admin_home();
+    file.close();
+
+    if (isfound) {
+        cout << endl << "You are already registered." << endl;
+        cout << endl << "Press 1 for Login Screen: ";
+        cin >> c;
+        if (c == 1) {
+            admin_home();
+        }
+    } else {
+        ofstream files("userauthrecords.txt", ios::app);
+        files << username << " " << password << endl;
+        files.close();
+        cout << endl;
+        cout << "\t Admin Registered" << endl;
+        cout << endl << "Press 1 to go back : ";
+        cin >> c;
+        if (c == 1) {
+            admin_home();
+        }
+    }
 }
 void adminlogin(){
 	bool isfound =false;
